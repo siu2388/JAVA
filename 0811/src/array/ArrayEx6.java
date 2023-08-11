@@ -20,3 +20,5 @@ public class ArrayEx6 {
 	}
 
 }
+
+// 이거 풀어보기
