@@ -8,7 +8,7 @@ public class CastTest {
 		int i = bt;
 		// 자동 형변환
 
-		int i = 11;
+		int i1 = 11;
 		// byte bt2 = i; 할당이 안됨
 		byte bt2 = (byte) i; // 큰 -> 작은걸로 넣을 때는 형변환을 필수로 해야지
 
