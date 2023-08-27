@@ -6,10 +6,12 @@ interface Helping {
 	void help();
 }
 
+//추상 클래스 (move추상메서드를 가지고 있음)
 abstract class Unit {
 	public abstract void move();
 }
 
+// Fighter클래스는 Unit클래스를 상속받고, Fightable 인터페이스를 구현한다.
 class Fighter extends Unit implements Fightable {
 	@Override
 	public void fight() {
