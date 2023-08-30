@@ -14,7 +14,7 @@ public class TreeSetTest1 {
 		System.out.println(ts); // 자동 정렬이 되있음
 
 		TreeSet<Person> pts = new TreeSet<Person>(new Comparator<Person>() {
-			// 비교하는 것 둘 다 있으면 우선순위 Comparator < compareTo
+			// 비교하는 것 둘 다 있으면 우선순위 Comparator > compareTo
 			@Override
 			public int compare(Person p1, Person p2) {
 				return p1.age - p2.age; // 양수 or 음수로 리턴 내림차순
