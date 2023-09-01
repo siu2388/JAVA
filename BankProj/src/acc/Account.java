@@ -1,8 +1,11 @@
 package acc;
 
-import exception.*;
+import java.io.Serializable;
 
-public class Account {
+import exception.BankError;
+import exception.BankException;
+
+public class Account implements Serializable {
 	String id;
 	String name;
 	int balance;
