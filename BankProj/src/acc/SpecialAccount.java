@@ -48,10 +48,6 @@ public class SpecialAccount extends Account {
 		super.deposit((int) (Math.round(money + money * interest)));
 	}
 
-	// @Override
-//	public String info() {
-//		return super.info() + ",등급:" + grade;
-//	}
 	@Override
 	public String toString() {
 		return super.toString() + ",등급:" + grade;

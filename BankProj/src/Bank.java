@@ -1,7 +1,17 @@
-import java.util.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
 
-import acc.*;
-import exception.*;
+import acc.Account;
+import acc.SpecialAccount;
+import exception.BankError;
+import exception.BankException;
 
 public class Bank {
 
@@ -76,16 +86,7 @@ public class Bank {
 		accs.put(id, new SpecialAccount(id, name, money, grade));
 	}
 
-//	Account searchAccById(String id) {
-//		// 향상된 for문
-//		for (Account acc : accs) {
-//			if (acc.getId().equals(id)) {
-//				return acc;
-//			}
-//		}
-//		return null;
-//	}
-
+	// 2. 입금
 	void deposit() throws BankException {
 		System.out.println("[입금]");
 		System.out.print("계좌번호:");
@@ -101,6 +102,7 @@ public class Bank {
 		accs.get(id).deposit(money);
 	}
 
+	// 3. 출금
 	void withdraw() throws BankException {
 		System.out.println("[출금]");
 		System.out.print("계좌번호:");
@@ -115,6 +117,7 @@ public class Bank {
 		accs.get(id).withdraw(money);
 	}
 
+	// 4. 계좌조회
 	void accountInfo() throws BankException {
 		System.out.println("[계좌조회]");
 		System.out.print("계좌번호:");
@@ -127,27 +130,93 @@ public class Bank {
 		System.out.println(accs.get(id));
 	}
 
+	// 5. 전체계좌조회
 	void allAccountInfo() {
 		System.out.println("[전체계좌조회]");
 		Iterator<Account> it = accs.values().iterator();
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
+	}
 
-		// 향상된 for문이 더 간단한 방법이로군...
-//		for (Account acc : accs) {
-//			System.out.println(acc);
-//		}
+	// 0.종료 선택하여 종료 시 파일로 데이터 저장(accs.bin)
+	public void storeToBinFile() {
+		DataOutputStream dao = null;
+		try {
+			dao = new DataOutputStream(new FileOutputStream("accs.bin"));
+			dao.writeInt(accs.size()); // 계좌 개수 저장
+			for (Account acc : accs.values()) {
+				if (acc instanceof SpecialAccount) {
+					dao.writeChar('S');
+				} else {
+					dao.writeChar('N');
+				}
+				dao.writeUTF(acc.getId());
+				dao.writeUTF(acc.getName());
+				dao.writeInt(acc.getBalance());
+
+				if (acc instanceof SpecialAccount) {
+					dao.writeUTF(((SpecialAccount) acc).getGrade().charAt(0) + ""); // 등급
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (dao != null) {
+					dao.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// 저장된 파일을 읽어올 때는 프로그램을 실행할 떄 한번만
+	public void loadFromBinaryFile() {
+		DataInputStream dis = null;
+		try {
+			dis = new DataInputStream(new FileInputStream("accs.bin"));
+
+			int count = dis.readInt();
+			for (int i = 0; i < count; i++) {
+				char sect = dis.readChar();
+				String id = dis.readUTF();
+				String name = dis.readUTF();
+				int balance = dis.readInt();
+				if (sect == 'S') {
+					String grade = dis.readUTF();
+					accs.put(id, new SpecialAccount(id, name, balance, grade));
+				} else {
+					accs.put(id, new Account(id, name, balance));
+				}
+
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (dis != null) {
+					dis.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 	public static void main(String[] args) {
 		Bank bank = new Bank();
+		bank.loadFromBinaryFile();
 		int sel;
 		while (true) {
 			try {
 				sel = bank.menu();
-				if (sel == 0)
+				if (sel == 0) {
+					bank.storeToBinFile();
 					break;
+				}
 				switch (sel) {
 				case 1:
 					bank.selAccMenu();

@@ -36,9 +36,6 @@ public class Account {
 		balance = money;
 	}
 
-//	public String info() {
-//		return("계좌번호:%s,이름:%s,잔액:%d", id, name, balance);
-//	}
 	@Override
 	public String toString() {
 		return String.format("계좌번호:%s,이름:%s,잔액:%d", id, name, balance);

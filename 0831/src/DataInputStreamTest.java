@@ -19,6 +19,22 @@ class Person {
 		this.married = married;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public double getWeight() {
+		return weight;
+	}
+
+	public boolean isMarried() {
+		return married;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("이름:%s, 나이:%d,몸무게:%f,결혼여부:%s", name, age, weight, (married ? "YES" : "NO"));
@@ -112,7 +128,6 @@ public class DataInputStreamTest {
 		List<Person> plist = new ArrayList<>();
 		FileInputStream fis = null;
 		DataInputStream dis = null;
-//  	Person p = null;
 		try {
 			fis = new FileInputStream("person.bin");
 			dis = new DataInputStream(fis);
@@ -141,16 +156,6 @@ public class DataInputStreamTest {
 	}
 
 	public static void main(String[] args) {
-//		Person p1 = new Person("메리", 2, 30.2, false);
-		// write(p1);
-//		Person p = read();
-//		System.out.println(p);
-//		List<Person> plist = new ArrayList<>();
-//		plist.add(new Person("한놈", 20, 30.5, true));
-//		plist.add(new Person("두시기", 23, 23.3, false));
-//		plist.add(new Person("석삼", 24, 55.5, false));
-//
-//		write(plist);
 
 		List<Person> plist = readList();
 		for (Person p : plist) {
