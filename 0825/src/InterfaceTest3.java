@@ -37,7 +37,7 @@ public class InterfaceTest3 {
 		// 익명클래스 (내부클래스)
 		BasicButton joinBtn = new BasicButton();
 		joinBtn.addClickEventHandler(new IClick() { // new IClick이 조상클래스고 그 클래스를
-																								// 상속받아 바로 매개변수로 만들어서 넘겨줌
+																// 상속받아 바로 매개변수로 만들어서 넘겨줌
 			@Override
 			public void iclick() {
 				System.out.println("회원가입 처리");

@@ -2,6 +2,7 @@ import emp.Employee;
 
 public class Company {
 	Employee[] emps = new Employee[100];
+	
 	int empCnt=0;
 	public void enter(Employee emp) { //Employee emp=emp1// upcasting
 		emps[empCnt++] = emp;

@@ -18,7 +18,10 @@ public abstract class Employee {
 	}
 
 	public double tax() {
-
+		double tax = 0.0;
+		return tax;
 	}
+
+	
 
 }

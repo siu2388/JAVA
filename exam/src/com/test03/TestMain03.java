@@ -18,17 +18,18 @@ public class TestMain03 {
 		while (st.hasMoreTokens()) {
 			list.add(st.nextToken());
 		}
-// string -> double
 		for (String i : list) {
-			double sum += i;
+			double d = Double.parseDouble(i);
+			sum += d;
 		}
-		return sum;
-		
-		sum = 
+		avg = sum / (double) list.size();
+
+		// 합계 평균 -> 소수점 4자리에서 반올림 -> 3자리 까지 표현
+		sum = Math.round(sum * 10000.0) / 10000.0;
+		avg = Math.round(avg * 10000.0) / 10000.0;
 
 		// 합계 평균 -> 소수점 4자리에서 반올림 -> 3자리 까지 표현
 		System.out.println("합 계: " + sum);
 		System.out.println("평 균: " + avg);
 	}
-
 }
