@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>profile</comment>
+<entry key="weigh">77</entry>
+<entry key="name">kim si u</entry>
+<entry key="age">30</entry>
+<entry key="height">170</entry>
+</properties>
