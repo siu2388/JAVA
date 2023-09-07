@@ -1,6 +1,7 @@
 package com.test05;
 
 public class Sales extends Employee implements Bonus {
+<<<<<<< Updated upstream
 
   Sales() {
 
@@ -25,5 +26,7 @@ public class Sales extends Employee implements Bonus {
   public String toString() {
     return String.format("%s\t\t%s\t%d", name, department, salary);
   }
+=======
+>>>>>>> Stashed changes
 
 }

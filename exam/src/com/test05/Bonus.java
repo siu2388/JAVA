@@ -1,7 +1,16 @@
 package com.test05;
 
 public interface Bonus {
+<<<<<<< Updated upstream
   public void incentive(int pay);  //인센티브 지급
+=======
+	int pay;
+
+	public void incentive(int pay){
+		
+	}
+
+>>>>>>> Stashed changes
 }
 
 /*
