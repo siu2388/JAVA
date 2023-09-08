@@ -30,7 +30,7 @@ public class Account implements Serializable {
 		return balance;
 	}
 
-	public Account() {
+	public Account() { // 기본생성자
 	}
 
 	public Account(String aid, String aname, int money) {
