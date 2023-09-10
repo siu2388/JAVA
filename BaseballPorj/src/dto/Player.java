@@ -61,7 +61,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return String.format("선수번호:%d, 선수명:%s, 백넘버:%d,소속팀:%s", num, name, backnum, teamname);
+		return String.format("선수번호:%d, 선수명:%s, 백넘버:%d, 소속팀:%s", num, name, backnum, teamname);
 	}
 
 }
